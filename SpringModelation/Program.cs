@@ -1,7 +1,5 @@
 ﻿using System;
 
-namespace SpringModelation
-{
 #if WINDOWS || LINUX
     /// <summary>
     /// The main class.
@@ -19,4 +17,3 @@ namespace SpringModelation
         }
     }
 #endif
-}
