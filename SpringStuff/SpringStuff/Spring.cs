@@ -12,15 +12,14 @@ class Spring
     public double stretch = 0.0f;
     double thyme = 0;
 
-    public Spring(Vector2 beginPoint, Vector2 endPoint, float restLength, float newLength/*, float stiffness*/, float radius, float stretch, int nrOfWinding, float materialThickness, float displacmentThingy = 1, float move = 0)
+    public Spring(Vector2 beginPoint, Vector2 endPoint, int nrOfWinding/*, float stiffness*/, float radius, float stretch, float materialThickness, float displacmentThingy = 69000, float move = 0)
     {
         this.beginPoint = beginPoint;
         this.endPoint = endPoint;
-        this.restLength = restLength;
-        //this.stiffness = stiffness;
         this.radius = radius;
         this.stretch = stretch + 5;
         this.move = move;
+        restLength = materialThickness * nrOfWinding;
         this.newLength = restLength;
         area = Math.PI * radius;
         innerArea = Math.PI * (radius - materialThickness);
@@ -28,7 +27,7 @@ class Spring
         stiffness = (displacmentThingy * Math.Pow(materialThickness, 4)) / (8 * nrOfWinding * Math.Pow((area - innerArea) / 2, 3));
     }
 
-    public void SLS(GameTime gameTime, float mass = 1.0f)//Simple Liniear Spring
+    public void SLS(GameTime gameTime, float mass = 5.0f)//Simple Liniear Spring
     {
         thyme += (double)gameTime.ElapsedGameTime.Milliseconds / 1000;
         move = Math.Sin(thyme * Math.Sqrt(stiffness / mass));

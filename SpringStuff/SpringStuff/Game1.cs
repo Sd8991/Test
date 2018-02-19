@@ -7,7 +7,7 @@ public class Game1 : Game
 {
     GraphicsDeviceManager graphics;
     SpriteBatch spriteBatch;
-    Spring s1, s2, s3;
+    Spring s1, s2, s3, s4, s5;
     Rectangle r;
     Texture2D SpringPic;
     Spring[] allSpring;
@@ -23,14 +23,18 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        allSpring = new Spring[3];
-        allRectangle = new Rectangle[3];
-        s1 = new Spring(new Vector2(50, 50), new Vector2(50, 100), 200.0f, 200.0f/*, 1*/, 50, 0.0f, 10, 5);
+        allSpring = new Spring[5];
+        allRectangle = new Rectangle[5];
+        s1 = new Spring(new Vector2(50, 50), new Vector2(50, 100), 45, 10, 0.0f, 1f);
         allSpring[0] = s1;
-        s2 = new Spring(new Vector2(150, 50), new Vector2(100, 200), 200.0f, 200.0f, /*10,*/ 50, 0.0f, 10, 10);
+        s2 = new Spring(new Vector2(200, 50), new Vector2(100, 200), 90, 10, 0.0f, 1f);
         allSpring[1] = s2;
-        s3 = new Spring(new Vector2(250, 50), new Vector2(50, 100), 200.0f, 200.0f, /*25,*/ 50, 0.0f, 10, 20);
+        s3 = new Spring(new Vector2(350, 50), new Vector2(50, 100), 180, 10, 0.0f, 1f);
         allSpring[2] = s3;
+        s4 = new Spring(new Vector2(500, 50), new Vector2(100, 200), 90, 20, 0.0f, 1f);
+        allSpring[3] = s4;
+        s5 = new Spring(new Vector2(650, 50), new Vector2(50, 100), 180, 20, 0.0f, 1f);
+        allSpring[4] = s5;
         base.Initialize();
     }
 
@@ -38,7 +42,7 @@ public class Game1 : Game
     {
         // Create a new SpriteBatch, which can be used to draw textures.
         spriteBatch = new SpriteBatch(GraphicsDevice);
-        SpringPic = Content.Load<Texture2D>("Spring");
+        SpringPic = Content.Load<Texture2D>("Spring_Mk_II");
     }
 
     protected override void UnloadContent()

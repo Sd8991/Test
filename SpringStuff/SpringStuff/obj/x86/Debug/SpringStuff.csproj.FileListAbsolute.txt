@@ -51,3 +51,4 @@ C:\Users\rickg\Desktop\School\SpringModulation\SpringStuff\SpringStuff\bin\Windo
 C:\Users\rickg\Desktop\School\SpringModulation\SpringStuff\SpringStuff\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\rickg\Desktop\School\SpringModulation\SpringStuff\SpringStuff\obj\x86\Debug\SpringStuff.csprojResolveAssemblyReference.cache
 C:\Users\rickg\Desktop\School\SpringModulation\SpringStuff\SpringStuff\bin\Windows\x86\Debug\Content\Spring.png
+C:\Users\rickg\Desktop\School\SpringModulation\SpringStuff\SpringStuff\bin\Windows\x86\Debug\Content\Spring_Mk_II.png
