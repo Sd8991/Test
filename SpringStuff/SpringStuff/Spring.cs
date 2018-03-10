@@ -24,15 +24,14 @@ class Spring
         this.move = move;
         this.mass = mass;
         this.dampFactor = dampFactor;
-        height = materialThickness * nrOfWinding;
-        //this.endPointY = beginPoint.Y + height;
+        height = endPoint.Y - beginPoint.Y;
         this.newLength = restLength;
         area = Math.PI * radius;
         innerArea = Math.PI * (radius - materialThickness);
         length = area * nrOfWinding;
         stiffness = (displacmentThingy * Math.Pow(materialThickness, 4)) / (8 * nrOfWinding * Math.Pow((area - innerArea) / 2, 3));
         this.restLength = beginPoint.Y + height + (mass * 9.81 / stiffness);
-        this.endPointY = beginPoint.Y + height;
+        this.endPointY = endPoint.Y + 100;
     }
 
     public void SLS(GameTime gameTime, float mass)//Simple Liniear Spring using Mathematics
@@ -43,7 +42,7 @@ class Spring
         stretch = newLength - restLength;
     }
 
-    public void SLSMkII(GameTime gameTime, float mass = 0.5f, float gravity = 9.81f)//Simple Liniear Spring using Laws of Physics
+    public void SLSMkII(GameTime gameTime, float mass = 100f, float gravity = 9.81f)//Simple Liniear Spring using Laws of Physics
     {
         criticDamp = Math.Sqrt(mass * stiffness) * 2;
         actualDamp = dampFactor * criticDamp;
