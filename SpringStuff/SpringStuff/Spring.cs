@@ -12,7 +12,6 @@ class Spring
     public double criticDamp, actualDamp, dampFactor;
     public double Fgravity, Fspring, Fres, acceleration, velocity;
     public double stretch = 0.0f;
-    double thyme = 0;
 
     public Spring(Vector2 beginPoint, Vector2 endPoint, int nrOfWinding, float radius, float stretch, float materialThickness, float mass, float dampFactor, float displacmentThingy = 69000, float move = 0)
     {
@@ -32,17 +31,22 @@ class Spring
         stiffness = (displacmentThingy * Math.Pow(materialThickness, 4)) / (8 * nrOfWinding * Math.Pow((area - innerArea) / 2, 3));
         this.restLength = beginPoint.Y + height + (mass * 9.81 / stiffness);
         this.endPointY = endPoint.Y + 100;
+        this.velocity = 0;
+        this.acceleration = 0;
+        this.Fgravity = this.mass * 9.81;
+        this.Fspring = 0;
+        this.Fres = 0;
     }
 
     public void SLS(GameTime gameTime, float mass)//Simple Liniear Spring using Mathematics
     {
-        thyme += gameTime.ElapsedGameTime.Milliseconds / 1000;
-        move = Math.Sin(thyme * Math.Sqrt(stiffness / mass));
+        //thyme += gameTime.ElapsedGameTime.Milliseconds / 1000;
+        //move = Math.Sin(thyme * Math.Sqrt(stiffness / mass));
         newLength += move;
         stretch = newLength - restLength;
     }
 
-    public void SLSMkII(GameTime gameTime, float mass = 100f, float gravity = 9.81f)//Simple Liniear Spring using Laws of Physics
+    public void SLSMkII(double thyme, float mass = 10f, float gravity = 9.81f)//Simple Liniear Spring using Laws of Physics
     {
         criticDamp = Math.Sqrt(mass * stiffness) * 2;
         actualDamp = dampFactor * criticDamp;
@@ -50,7 +54,7 @@ class Spring
         Fspring = -stiffness * stretch;
         Fres = Fgravity + Fspring - (actualDamp * velocity);
         acceleration = Fres / mass;
-        thyme = (double)gameTime.ElapsedGameTime.Milliseconds / 1000;
+        //thyme = (double)gameTime.ElapsedGameTime.Milliseconds / 1000;
         velocity = velocity + acceleration * thyme;
         endPointY = endPointY + velocity * thyme;
         stretch = endPointY - restLength;
