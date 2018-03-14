@@ -29,7 +29,7 @@ class Spring
         innerArea = Math.PI * (radius - materialThickness);
         length = area * nrOfWinding;
         stiffness = (displacmentThingy * Math.Pow(materialThickness, 4)) / (8 * nrOfWinding * Math.Pow((area - innerArea) / 2, 3));
-        this.restLength = beginPoint.Y + height + (mass * 9.81 / stiffness);
+        this.restLength = height + (mass * 9.81 / stiffness);
         this.endPointY = endPoint.Y + 100;
         this.velocity = 0;
         this.acceleration = 0;

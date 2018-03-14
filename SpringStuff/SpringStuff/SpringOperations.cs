@@ -33,6 +33,6 @@ class SpringOperations
         s2.endPointY = s2.endPointY + s2.velocity * thyme;
 
         s1.stretch = s1.endPointY - s1.restLength;
-        s2.stretch = s2.endPointY - s2.restLength;
+        s2.stretch = s2.endPointY - s1.endPointY - s2.restLength;
     }
 }
